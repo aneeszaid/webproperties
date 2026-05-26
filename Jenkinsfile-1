@@ -17,7 +17,7 @@ pipeline {
 
                         python redirect_check.py
 
-                        mkdir -p $OUTPUT_DIR
+                        mkdir -p /home/ubuntu/excel
                         mv redirect_results.xlsx $OUTPUT_DIR/$OUTPUT_FILE
                         '''
                     }

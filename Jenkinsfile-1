@@ -17,7 +17,7 @@ pipeline {
 
                         python redirect_check.py
 
-                        mv redirect_results.xlsx $OUTPUT_DIR/$OUTPUT_FILE
+                        mv $OUTPUT_FILE $OUTPUT_DIR/$OUTPUT_FILE
                         '''
                     }
                 }

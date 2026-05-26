@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        OUTPUT_DIR = "/home/ubuntu/excel"
+        OUTPUT_DIR = "/data"
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
 
                         python redirect_check.py
 
-                        mv $OUTPUT_FILE $OUTPUT_DIR/$OUTPUT_FILE
+                        mv $OUTPUT_FILE $OUTPUT_DIR/
                         '''
                     }
                 }

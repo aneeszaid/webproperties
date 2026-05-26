@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    environment {
+        OUTPUT_DIR = "/home/ubuntu/excel"
+    }
+
+    stages {
+
+        stage('Run Script in Docker') {
+            steps {
+                script {
+                    docker.image('redirect-python').inside('-v /home/ubuntu/data:/data') {
+                        sh '''
+                        TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+                        OUTPUT_FILE="redirect_results_$TIMESTAMP.xlsx"
+
+                        python redirect_check.py
+
+                        mkdir -p $OUTPUT_DIR
+                        mv redirect_results.xlsx $OUTPUT_DIR/$OUTPUT_FILE
+                        '''
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Job completed"
+        }
+        failure {
+            echo "❌ Job failed"
+        }
+    }
+}

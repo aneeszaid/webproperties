@@ -12,12 +12,13 @@ pipeline {
                 script {
                     docker.image('redirect-python').inside('-v /home/ubuntu/data:/data') {
                         sh '''
-                        TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-                        OUTPUT_FILE="redirect_results_$TIMESTAMP.xlsx"
+                        
+                           TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 
-                        python redirect_check.py
+                           python redirect_check.py
 
-                        mv $OUTPUT_FILE $OUTPUT_DIR/
+                           mv redirect_results*.xlsx $OUTPUT_DIR/ || echo "No XLSX file found"
+
                         '''
                     }
                 }

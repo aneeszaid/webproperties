@@ -15,7 +15,7 @@ pipeline {
                         
                            TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 
-                           python redirect_check.py
+                           python redirect_check-1.py
 
                            mv redirect_results*.xlsx $OUTPUT_DIR/ || echo "No XLSX file found"
 

@@ -29,7 +29,7 @@ for original_url in urls:
                 url,
                 headers=headers,
                 allow_redirects=True,
-                timeout=40,
+                timeout=20,
                 verify=False
             )
         except:
@@ -38,7 +38,7 @@ for original_url in urls:
                 url,
                 headers=headers,
                 allow_redirects=True,
-                timeout=40,
+                timeout=20,
                 verify=False
             )
 

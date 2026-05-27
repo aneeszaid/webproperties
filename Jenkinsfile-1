@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     
-                    docker.image('redirect-python').inside('--dns 8.8.8.8 -v /home/ubuntu/data:/data') {
+                   sudo docker.image('redirect-python').inside('--dns 8.8.8.8 -v /home/ubuntu/data:/data') {
                         sh '''
                         
                            TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
